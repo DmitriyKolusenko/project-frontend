@@ -31,3 +31,7 @@
 .ts-shop-nav-bar-active {
     background-color: #f1efef;
 }
+
+.ts-shop-hidden {
+    display: none;
+}

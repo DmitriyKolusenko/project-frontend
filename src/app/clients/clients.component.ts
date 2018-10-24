@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client.model';
 import { ClientService } from './client.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-clients',
@@ -11,8 +12,9 @@ export class ClientsComponent implements OnInit {
 
   private _clients: Client[];
   private _isLoading: boolean = false;
+  public str: string;
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private _appComponent: AppComponent) { }
 
   get isLoading(): boolean {
     return this._isLoading;
@@ -24,7 +26,10 @@ export class ClientsComponent implements OnInit {
 
   private getClients(): void {
     this._isLoading = true;
-    this.clientService.getClients().subscribe(
+    this.str = this._appComponent.sessionId;
+    console.log(this.str);
+    
+    this.clientService.getClients(this.str).subscribe(
       (clients: Client[]) => {
         this._clients = clients;
         this._isLoading = false;

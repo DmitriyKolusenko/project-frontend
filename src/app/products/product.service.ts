@@ -2,17 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './product.model';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/internal/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private http1: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('../../assets/products.json').pipe(delay(1000));
+    return this.http.get<Product[]>('http://localhost:8080/goods');
   }
 
+  public placeOrder(products: Product[], str: string):Observable<any>{
+    return this.http1.post<any>('http://localhost:8080/createorr',{
+      sessionId: str,
+      order: products
+    });
+  }
 }
