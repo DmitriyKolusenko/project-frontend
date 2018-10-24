@@ -9,6 +9,9 @@ import { ProductsComponent } from './products/products.component';
 import { ClientsComponent } from './clients/clients.component';
 import { TsShopFilterPipe } from './pipes/ts-shop-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersComponent } from './orders/orders.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SalesstatisticsComponent } from './salesstatistics/salesstatistics.component';
 
 
 
@@ -16,6 +19,9 @@ const appRoutes: Routes = [
   { path: 'autorization', component: AutorizationComponent},
   { path: 'products', component: ProductsComponent },
   { path: 'clients', component: ClientsComponent },
+  { path: 'orders', component: OrdersComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'salesstatistics', component: SalesstatisticsComponent},
   { path: '',
     redirectTo: '/autorization',
     pathMatch: 'full'
@@ -28,6 +34,9 @@ const appRoutes: Routes = [
     AutorizationComponent,
     ClientsComponent,
     ProductsComponent,
+    OrdersComponent,
+    ProfileComponent,
+    SalesstatisticsComponent,
     TsShopFilterPipe
 
   ],
